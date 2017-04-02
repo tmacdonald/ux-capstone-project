@@ -30,4 +30,9 @@ export const writePost = (post) => {
     newPostRef.set(post)
 }
 
-export const retrieveMessages = retrieveDatabaseEntry('RETRIEVE_MESSAGES', 'messages')
+//export const retrieveMessages = retrieveDatabaseEntry('RETRIEVE_MESSAGES', 'messages')
+
+export const retrieveMessages = (dispatch) => {
+    dispatch({ type: 'RETRIEVE_MESSAGES', subtype: 'RETRIEVE' })
+    dispatch({ type: 'RETRIEVE_MESSAGES', subtype: 'SUCCESS', data: ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteern','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'] })
+}

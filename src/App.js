@@ -5,14 +5,18 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const { messages } = this.props
+    const { changeMessage, messages } = this.props
 
     const listItems = messages.map(message => <li>{message}</li>)
 
     return (
-      <ul>
-        {listItems}
-      </ul>
+      <div>
+        <h1>Skeleton</h1>
+        <ul>
+          {listItems}
+        </ul>
+        <button className="button button-primary" onClick={changeMessage}>Anchor button</button>
+      </div>
     );
   }
 }

@@ -6,6 +6,8 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { retrieveMessages, writePost } from './actions';
 import App from './App';
+import 'skeleton-css/css/normalize.css';
+import 'skeleton-css/css/skeleton.css';
 
 const reducer = (state = { } , action) => {
   if (action.type === 'RETRIEVE_MESSAGES') {
@@ -31,5 +33,5 @@ ReactDOM.render(
 //   { time: Date.now(), message: 'Message 2'},
 //   { time: Date.now(), message: 'Message 3'}
 // ])
-writePost({ time: Date.now(), message: 'ahhh' })
+//writePost({ time: Date.now(), message: 'ahhh' })
 //writeMessage('here is a second message')
