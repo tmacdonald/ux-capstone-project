@@ -27,7 +27,15 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeMessage: () => {
-    dispatch({ type: 'CHANGE_MESSAGE', message: 'This is a new message' })
+    //dispatch({ type: 'CHANGE_MESSAGE', message: 'This is a new message' })
+    dispatch((dispatcher) => {
+      console.log('dispatching REQUEST_MESSAGES')
+      dispatcher({ type: 'REQUEST_MESSAGES' })
+      setTimeout(() => {
+        console.log('dispatching REQUEST_MESSAGES_DONE')
+        dispatcher({ type: 'REQUEST_MESSAGES_DONE', message: 'This is a new message '})
+      }, 1000)
+    })
   }
 })
 
