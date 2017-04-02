@@ -1,41 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import { Provider } from 'react-redux';
+import { retrieveMessages, writePost } from './actions';
 import App from './App';
-import './index.css';
-
-const logger = store => next => action => {
-  console.group(action.type)
-  console.log('before', store.getState());
-  next(action)
-  console.log('after', store.getState())
-  console.groupEnd(action.type)
-}
-
-const delay = store => next => action => {
-  setTimeout(() => next(action), 1000)
-}
-
-const thunk = store => next => action => {
-  if (typeof action === 'function') {
-    action(store.dispatch)
-  } else {
-    next(action)
-  }  
-}
 
 const reducer = (state = { } , action) => {
-  if (action.type === 'CHANGE_MESSAGE') {
-    return { message: action.message }
-  } else if (action.type === 'REQUEST_MESSAGES_DONE') {
-    console.log('handling REQUEST_MESSAGES_DONE')
-    return { message: action.message }
+  if (action.type === 'RETRIEVE_MESSAGES') {
+    if (action.subtype === 'SUCCESS') {
+      return { messages: action.data }
+    }
   }
   return state
 }
 
-const store = createStore(reducer, { message: "Hello, React" }, applyMiddleware(thunk, logger))
+const store = createStore(reducer, { messages: [] }, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
   <Provider store={store}>
@@ -43,3 +24,12 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+//store.dispatch(retrieveMessages)
+// writePosts([
+//   { time: Date.now(), message: 'Message 1'},
+//   { time: Date.now(), message: 'Message 2'},
+//   { time: Date.now(), message: 'Message 3'}
+// ])
+writePost({ time: Date.now(), message: 'ahhh' })
+//writeMessage('here is a second message')
