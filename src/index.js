@@ -5,7 +5,10 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { retrieveMessages, writePost } from './actions';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './App';
+
+injectTapEventPlugin();
 
 const reducer = (state = { } , action) => {
   if (action.type === 'RETRIEVE_MESSAGES') {
@@ -31,5 +34,5 @@ ReactDOM.render(
 //   { time: Date.now(), message: 'Message 2'},
 //   { time: Date.now(), message: 'Message 3'}
 // ])
-writePost({ time: Date.now(), message: 'ahhh' })
+//writePost({ time: Date.now(), message: 'ahhh' })
 //writeMessage('here is a second message')
