@@ -9,7 +9,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {List, ListItem} from 'material-ui/List';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ContentSend from 'material-ui/svg-icons/content/send';
+import ContentDrafts from 'material-ui/svg-icons/content/drafts';
+import Schedule from 'material-ui/svg-icons/action/schedule';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+
+import UpcomingEvents from './components/UpcomingEvents';
+import SearchEvents from './components/SearchEvents';
+import VolunteeringHistory from './components/VolunteeringHistory';
+import VolunteeringProfile from './components/VolunteeringProfile';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -40,37 +51,23 @@ class App extends Component {
             onLeftIconButtonTouchTap={this.onTap}
           />  
 
-          <Card>
-            <CardHeader
-              title="Your Upcoming Events"
-            />
-          </Card>
+          <UpcomingEvents />
 
-          <Card>
-            <CardHeader
-              title="Search for Volunteering Opportunities"
-            />
-          </Card>
+          <SearchEvents />
 
-          <Card>
-            <CardHeader
-              title="View Your Volunteering History"
-            />
-          </Card>
+          <VolunteeringHistory />
 
-          <Card>
-            <CardHeader
-              title="Create Your Volunteering Profile"
-            />
-          </Card>
+          <VolunteeringProfile />
 
           <Drawer 
             docked={false} 
             open={this.state.open}
             onRequestChange={(open) => this.setState({open})}
           >
-            <MenuItem>Menu Item 1</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
+            <MenuItem leftIcon={<Schedule />}>Volunteering Schedule</MenuItem>
+            <MenuItem>Search for Events</MenuItem>
+            <MenuItem>View Volunteering History</MenuItem>
+            <MenuItem>Create a Volunteering Profile</MenuItem>
           </Drawer>
         </div>
       </MuiThemeProvider>      

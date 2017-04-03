@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { retrieveMessages, writePost } from './actions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './App';
+import './index.css';
 
 injectTapEventPlugin();
 
